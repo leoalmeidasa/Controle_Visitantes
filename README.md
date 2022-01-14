@@ -21,7 +21,7 @@
 
 ## Setup
 
-1. `git clone https://github.com/leoalmeidasa/Controle_Visitantes.git
+1. `git clone https://github.com/leoalmeidasa/Controle_Visitantes.git`
 2. `cd Controle_Visitantes`
 3. `rails db:create db:migrate`
 5. `rails s`
