@@ -1,24 +1,28 @@
-# README
+# Sistema Controle de Visitantes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Projeto pessoal
 
-Things you may want to cover:
+## Requisitos
 
-* Ruby version
+● Disponivel no Link: https://github.com/leoalmeidasa/Controle_Visitantes/projects/1
 
-* System dependencies
+## Dependências
 
-* Configuration
+- Ruby 3.0.2
+- Rails 6.1.4.4
+- Sqlite3
 
-* Database creation
+## API no Heroku
+● link: 
 
-* Database initialization
+## Documentação da API
 
-* How to run the test suite
+● link: 
 
-* Services (job queues, cache servers, search engines, etc.)
+## Setup
 
-* Deployment instructions
-
-* ...
+1. `git clone https://github.com/leoalmeidasa/Controle_Visitantes.git
+2. `cd Controle_Visitantes`
+3. `rails db:create db:migrate`
+5. `rails s`
+6. Abrir o link localhost:3000
