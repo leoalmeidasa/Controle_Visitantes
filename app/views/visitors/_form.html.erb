@@ -11,9 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.text_field :photo %>
+  <div class="ml-4 mb-4">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <% if @visitor.photo%>
+          <%= image_tag(@visitor.photo, class: "card-img-top", id: "shot") %>
+        <% else %>
+          <img class="card-img-top" src="/cat.jpg" id="shot">
+        <% end %>
+      </div>
+
+      <div class="card ml-2" style="width: 18rem;" id="viewfinder">
+        <video width="288" height="301" autoplay class=""></video>
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <button type="button" class="btn btn-dark btn-sm" id="change_picture">Change Picture</button>
+      <button type="button" class="btn btn-dark btn-sm" id="snap">Snap</button>
+    </div>
   </div>
 
   <div class="field">
@@ -39,4 +55,6 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+  <%= form.hidden_field :visitor_photo, value: @visitor.visitor_photo %>
 <% end %>

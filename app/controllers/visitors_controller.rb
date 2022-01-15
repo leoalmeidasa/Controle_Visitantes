@@ -10,6 +10,13 @@ class VisitorsController < ApplicationController
   def show
   end
 
+  def upload
+    File.open(upload_path, 'wb') do |f|
+      f.write request.raw_post
+    end
+    render :text => "ok"
+  end
+
   # GET /visitors/new
   def new
     @visitor = Visitor.new
