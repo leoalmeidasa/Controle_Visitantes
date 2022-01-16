@@ -10,13 +10,6 @@ class VisitorsController < ApplicationController
   def show
   end
 
-  def upload
-    File.open(upload_path, 'wb') do |f|
-      f.write request.raw_post
-    end
-    render :text => "ok"
-  end
-
   # GET /visitors/new
   def new
     @visitor = Visitor.new
@@ -29,7 +22,7 @@ class VisitorsController < ApplicationController
   # POST /visitors or /visitors.json
   def create
     @visitor = Visitor.new(visitor_params)
-
+    PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
     respond_to do |format|
       if @visitor.save
         format.html { redirect_to visitor_url(@visitor), notice: "Visitor was successfully created." }
@@ -43,6 +36,7 @@ class VisitorsController < ApplicationController
 
   # PATCH/PUT /visitors/1 or /visitors/1.json
   def update
+    PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
     respond_to do |format|
       if @visitor.update(visitor_params)
         format.html { redirect_to visitor_url(@visitor), notice: "Visitor was successfully updated." }
@@ -72,6 +66,7 @@ class VisitorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def visitor_params
-      params.require(:visitor).permit(:photo, :description, :cpf, :genre, :telephone)
+      params.require(:visitor).permit(:photo, :description, :cpf, :genre, :telephone, :visitor_photo,
+                                      :badge_id, :sector_id)
     end
 end

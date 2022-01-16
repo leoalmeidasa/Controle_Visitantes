@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @visitor.photo %>
-</p>
-
+<div class="card" style="width: 18rem;">
+  <% if @visitor.photo.attached?  %>
+    <%= image_tag(@visitor.photo, class: "card-img-top") %>
+  <% else %>
+    <img class="card-img-top" src="/cat.jpg" alt="">
+  <% end %>
+</div>
 <p>
   <strong>Description:</strong>
   <%= @visitor.description %>

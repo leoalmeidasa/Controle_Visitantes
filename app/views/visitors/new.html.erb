@@ -1,17 +1,7 @@
+<div>
 <h1>New Visitor</h1>
 
 <%= render 'form', visitor: @visitor %>
-<div class="form-control-visitor" id="tirar" class="form-control-visitor" >
-  <div id="camera" style="width: 310px; height: 232px"></div>
-  <p class="text-center">
-    <a href="javascript:void(take_photo())">Tirar Foto</a>
-  </p>
-</div>
-<div id="alterar" class="form-control-visitor">
-  <div id="result"></div>
-  <p class="text-center">
-    <a href="javascript:void(take_photo())">Outra Foto</a>
-  </p>
-</div>
-<%= javascript_include_tag 'webcam' %>
+
 <%= link_to 'Back', visitors_path %>
+</div>

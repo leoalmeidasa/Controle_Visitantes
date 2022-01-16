@@ -1,4 +1,4 @@
-<%= form_with(model: visitor) do |form| %>
+<%= simple_form_for @visitor do |form| %>
   <% if visitor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(visitor.errors.count, "error") %> prohibited this visitor from being saved:</h2>
@@ -14,10 +14,10 @@
   <div class="ml-4 mb-4">
     <div class="row">
       <div class="card" style="width: 18rem;">
-        <% if @visitor.photo%>
+        <% if @visitor.photo.attached? %>
           <%= image_tag(@visitor.photo, class: "card-img-top", id: "shot") %>
         <% else %>
-          <img class="card-img-top" src="/cat.jpg" id="shot">
+          <img class="card-img-top" src="/../cat.jpg" id="shot">
         <% end %>
       </div>
 
@@ -32,29 +32,47 @@
     </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+  <form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-10">
+        <%= form.input_field :description, class:"form-control" %>
+      </div>
+    </div>
 
   <div class="field">
     <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
+    <%= form.input_field :cpf %>
   </div>
 
   <div class="field">
     <%= form.label :genre %>
-    <%= form.text_field :genre %>
+    <%= form.input_field :genre %>
   </div>
 
   <div class="field">
     <%= form.label :telephone %>
-    <%= form.text_field :telephone %>
+    <%= form.input_field :telephone %>
   </div>
 
-  <div class="actions">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Crachá</label>
+      <div class="col-sm-10">
+        <%= form.collection_select(:badge_id, Badge.all, :id, :description, include_blank:false) %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Setor</label>
+      <div class="col-sm-10">
+        <%= form.collection_select(:sector_id, Sector.all, :id, :description, include_blank:false) %>
+      </div>
+    </div>
+
+    <div class="actions">
     <%= form.submit %>
   </div>
 
   <%= form.hidden_field :visitor_photo, value: @visitor.visitor_photo %>
+  </form>
 <% end %>
