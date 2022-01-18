@@ -65,6 +65,6 @@ class BadgesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def badge_params
-      params.require(:badge).permit(:description)
+      params.require(:badge).permit(:description, :status)
     end
 end

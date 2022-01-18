@@ -46,8 +46,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :genre %>
-    <%= form.input_field :genre %>
+    <%= form.input :genre, collection: [['Feminino', 'Feminino'], ['Masculino', 'Masculino']], label_method: :second, value_method: :first %>
   </div>
 
   <div class="field">

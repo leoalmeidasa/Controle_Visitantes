@@ -15,6 +15,7 @@ class BadgesTest < ApplicationSystemTestCase
     click_on "New Badge"
 
     fill_in "Description", with: @badge.description
+    check "Status" if @badge.status
     click_on "Create Badge"
 
     assert_text "Badge was successfully created"
@@ -26,6 +27,7 @@ class BadgesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Description", with: @badge.description
+    check "Status" if @badge.status
     click_on "Update Badge"
 
     assert_text "Badge was successfully updated"

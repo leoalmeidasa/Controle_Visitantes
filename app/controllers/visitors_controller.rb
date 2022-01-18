@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class VisitorsController < ApplicationController
-  before_action :set_visitor, only: %i[ show edit update destroy ]
+  before_action :set_visitor, only: %i[show edit update destroy]
 
   # GET /visitors or /visitors.json
   def index
@@ -7,8 +9,7 @@ class VisitorsController < ApplicationController
   end
 
   # GET /visitors/1 or /visitors/1.json
-  def show
-  end
+  def show; end
 
   # GET /visitors/new
   def new
@@ -16,16 +17,17 @@ class VisitorsController < ApplicationController
   end
 
   # GET /visitors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /visitors or /visitors.json
   def create
     @visitor = Visitor.new(visitor_params)
+
     PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
+
     respond_to do |format|
       if @visitor.save
-        format.html { redirect_to visitor_url(@visitor), notice: "Visitor was successfully created." }
+        format.html { redirect_to visitor_url(@visitor), notice: 'Visitor was successfully created.' }
         format.json { render :show, status: :created, location: @visitor }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +41,7 @@ class VisitorsController < ApplicationController
     PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
     respond_to do |format|
       if @visitor.update(visitor_params)
-        format.html { redirect_to visitor_url(@visitor), notice: "Visitor was successfully updated." }
+        format.html { redirect_to visitor_url(@visitor), notice: 'Visitor was successfully updated.' }
         format.json { render :show, status: :ok, location: @visitor }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,20 +55,21 @@ class VisitorsController < ApplicationController
     @visitor.destroy
 
     respond_to do |format|
-      format.html { redirect_to visitors_url, notice: "Visitor was successfully destroyed." }
+      format.html { redirect_to visitors_url, notice: 'Visitor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_visitor
-      @visitor = Visitor.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def visitor_params
-      params.require(:visitor).permit(:photo, :description, :cpf, :genre, :telephone, :visitor_photo,
-                                      :badge_id, :sector_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_visitor
+    @visitor = Visitor.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def visitor_params
+    params.require(:visitor).permit(:photo, :description, :cpf, :genre, :telephone, :visitor_photo,
+                                    :badge_id, :sector_id)
+  end
 end
