@@ -1,7 +1,7 @@
- <div class=" table-responsive col py-3">
+ <div class=" table-responsive-sm col py-3">
       <h1>Visitantes</h1>
 
-      <table class="table table-hover">
+      <table class="table table-hover ">
         <thead class="thead-dark">
         <tr>
           <th>Foto</th>
@@ -18,16 +18,16 @@
         <tbody>
         <% @visitors.each do |visitor| %>
           <tr>
-            <td><%= image_tag visitor.photo, size:'80x80' if visitor.photo.attached? %></td>
+            <td><%= image_tag visitor.photo, size:'100x80' if visitor.photo.attached? %></td>
             <td><%= visitor.description %></td>
             <td><%= visitor.cpf %></td>
             <td><%= visitor.genre %></td>
             <td><%= visitor.telephone %></td>
             <td><%= visitor.badge.description %></td>
             <td><%= visitor.sector.description %></td>
-            <td><%= link_to 'Show', visitor %></td>
-            <td><%= link_to 'Edit', edit_visitor_path(visitor) %></td>
-            <td><%= link_to 'Destroy', visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', visitor, class: "btn btn-success"  %></td>
+            <td><%= link_to 'Edit', edit_visitor_path(visitor), class: "btn btn-warning" %></td>
+            <td><%= link_to 'Destroy', visitor, method: :delete, class: "btn btn-danger",  data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
         </tbody>

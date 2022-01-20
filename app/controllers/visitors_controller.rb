@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
-  before_action :set_visitor, only: %i[show edit update destroy]
+  before_action :set_visitor, only: %i[show edit update destroy ]
 
   # GET /visitors or /visitors.json
   def index
@@ -22,11 +22,15 @@ class VisitorsController < ApplicationController
   # POST /visitors or /visitors.json
   def create
     @visitor = Visitor.new(visitor_params)
+    @visitor.entry = Time.now
 
     PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
 
     respond_to do |format|
       if @visitor.save
+        @badge = Badge.find(visitor_params[:badge_id])
+        @badge.status = true
+        @badge.save
         format.html { redirect_to visitor_url(@visitor), notice: 'Visitor was successfully created.' }
         format.json { render :show, status: :created, location: @visitor }
       else
@@ -70,6 +74,6 @@ class VisitorsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def visitor_params
     params.require(:visitor).permit(:photo, :description, :cpf, :genre, :telephone, :visitor_photo,
-                                    :badge_id, :sector_id)
+                                    :badge_id, :sector_id, :entry, :output)
   end
 end

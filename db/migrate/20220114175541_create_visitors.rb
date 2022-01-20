@@ -6,6 +6,8 @@ class CreateVisitors < ActiveRecord::Migration[6.1]
       t.string :cpf
       t.string :genre
       t.string :telephone
+      t.datetime :entry
+      t.datetime :output
       t.references :badge, null: false, foreign_key: true
       t.references :sector, null: false, foreign_key: true
 

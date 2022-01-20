@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_135823) do
     t.string "cpf"
     t.string "genre"
     t.string "telephone"
+    t.datetime "entry"
+    t.datetime "output"
     t.integer "badge_id", null: false
     t.integer "sector_id", null: false
     t.datetime "created_at", precision: 6, null: false

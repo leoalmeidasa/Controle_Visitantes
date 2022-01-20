@@ -7,6 +7,7 @@ class Visitor < ApplicationRecord
   validates :cpf, presence: true, length: { maximum: 11 }
   validates :cpf, uniqueness: { case_sensitive: false }
   validates :description, presence: true
+  validates :badge_id, uniqueness: true
 
   has_one_attached :photo
 end

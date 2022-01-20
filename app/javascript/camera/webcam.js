@@ -23,8 +23,8 @@ document.addEventListener("turbolinks:load", function () {
 
             var constraints = {
                 video: {
-                    width: { min: 288, ideal: 288 },
-                    height: { min: 301, ideal: 301 }
+                    width: { min: 320, ideal: 320 },
+                    height: { min: 240, ideal: 240 }
                 }
             }
 

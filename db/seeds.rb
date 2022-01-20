@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ badges = Badge.create([{ description: 1 }, { description: 2 }])
+ Sector.create([{ description: 'Gabinete' }, { description: 'Corregedoria' }])
