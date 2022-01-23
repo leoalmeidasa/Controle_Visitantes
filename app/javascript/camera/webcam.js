@@ -48,7 +48,8 @@ document.addEventListener("turbolinks:load", function () {
 
                     canvas.getContext('2d').drawImage(video, 0, 0)
 
-                    var dataUrl = canvas.toDataURL('image/jpeg')
+                    var dataUrl = canvas.toDataURL('image/jpeg', 1.0)
+
 
                     document.getElementById("shot").src = dataUrl
 

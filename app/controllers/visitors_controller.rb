@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
-  before_action :set_visitor, only: %i[show edit update destroy ]
+  before_action :set_visitor, only: %i[show edit update destroy]
 
   # GET /visitors or /visitors.json
   def index
@@ -42,9 +42,9 @@ class VisitorsController < ApplicationController
 
   # PATCH/PUT /visitors/1 or /visitors/1.json
   def update
-    PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
     respond_to do |format|
       if @visitor.update(visitor_params)
+        PhotoAttachmentService.attach(@visitor, params['visitor']['visitor_photo'])
         format.html { redirect_to visitor_url(@visitor), notice: 'Visitor was successfully updated.' }
         format.json { render :show, status: :ok, location: @visitor }
       else

@@ -1,0 +1,39 @@
+<div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Entrada e Saída</h1>
+        <div class="card-body">
+
+          <%= form_with(model: Visitor, local: true) do |form| %>
+            <% if Visitor.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(Visitor.errors.count, "error") %> prohibited this Visitor from being saved:</h2>
+
+                <ul>
+                  <% Visitor.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="row">
+
+              <div class="field form-group col-2">
+                <%= form.label :output, "Estadia Final" %>
+                <%= form.text_field :output, class:"form-control" %>
+              </div>
+
+            </div>
+
+            </div>
+            <div class="actions">
+              <%= form.submit "Registrar", class:"btn btn-primary btn-lg btn-block" %>
+            </div>
+
+          <% end %>
+
+    </div>
+    <%= link_to 'Back', visitors_path %>
+    </section>
+</div>
